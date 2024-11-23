@@ -5,7 +5,7 @@ import './App.css';
 function QRCodeDisplay() {
     const [qrData, setQrData] = useState(null);
     const [status, setStatus] = useState('loading');
-
+    const timeoutDefault = 3000;
     React.useEffect(() => {
         const fetchQRCode = async () => {
             try {
@@ -20,7 +20,7 @@ function QRCodeDisplay() {
         };
 
         // Buscar o QR Code a cada 3 segundos
-        const interval = setInterval(fetchQRCode, 3000);
+        const interval = setInterval(fetchQRCode, timeoutDefault);
         return () => clearInterval(interval);
     }, []);
 
@@ -28,6 +28,7 @@ function QRCodeDisplay() {
         return <h1>Carregando sistema...</h1>;
     }
     if (status === 'ready') {
+        timeoutDefault = 30000;
         return <h1>Bot já funcional!</h1>;
     }
     if (status === 'error') {
