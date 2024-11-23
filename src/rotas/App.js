@@ -9,7 +9,7 @@ function QRCodeDisplay() {
     React.useEffect(() => {
         const fetchQRCode = async () => {
             try {
-                const response = await fetch('http://localhost:3001/qrcode');
+                const response = await fetch('http://192.168.3.57:3001/qrcode');
                 const data = await response.json();
                 setStatus(data.status);
                 setQrData(data.qrCode);
