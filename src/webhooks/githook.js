@@ -6,7 +6,6 @@ app.use(express.json());
 
 app.post('/githook', (req, res) => {
     const payload = req.body;
-
     if (payload.ref === 'refs/heads/main') { // Substitua 'main' pela branch desejada
         console.log('Novo commit detectado. Fazendo pull...');
         exec('git -C /home/felpsgk/Documents/react/felps-app pull', (err, stdout, stderr) => {
