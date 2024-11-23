@@ -3,7 +3,7 @@ const sqlite3 = require('sqlite3').verbose();
 const app = express();
 const port = 3003;
 
-const db = new sqlite3.Database('./piadas.db');
+const db = new sqlite3.Database('../db/piadas.db');
 
 app.get('/piadas', (req, res) => {
   db.all('SELECT * FROM piadas', [], (err, rows) => {
