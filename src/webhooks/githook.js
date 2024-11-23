@@ -22,4 +22,4 @@ app.post('/githook', (req, res) => {
     }
 });
 
-app.listen(3000, () => console.log('Servidor ouvindo na porta 3000'));
+app.listen(3002, () => console.log('Servidor ouvindo na porta 3002'));
