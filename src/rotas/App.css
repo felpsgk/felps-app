@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+.tab-button {
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  background-color: #282c34;
+  color: white;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-size: 16px;
+}
+
+.tab-button.active {
+  border-bottom: 2px solid #61dafb;
+  font-weight: bold;
+}
+
+.tab-button:hover {
+  background-color: #3b3f47;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

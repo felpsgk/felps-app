@@ -1,3 +1,4 @@
+//Interessante, mas trabalhoso. Não usarei mais.
 const express = require('express');
 const { exec } = require('child_process');
 
