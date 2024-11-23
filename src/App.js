@@ -7,7 +7,10 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Youtube - Modifique o arquivo <code>src/App.js</code> e salve para ver.
+          teste - desenvolvendo o <code>codigo</code> na máquina.
+        </p>
+        <p>
+          e subindo com commit.
         </p>
         <a
           className="App-link"
