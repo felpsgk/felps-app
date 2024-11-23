@@ -5,30 +5,40 @@ import './App.css';
 function QRCodeDisplay() {
     const [qrData, setQrData] = useState(null);
     const [status, setStatus] = useState('loading');
-    var timeoutDefault = 3000;
-    React.useEffect(() => {
+    const [intervalDuration, setIntervalDuration] = useState(5000); // Duração padrão do intervalo
+
+    useEffect(() => {
         const fetchQRCode = async () => {
             try {
                 const response = await fetch('http://192.168.3.57:3001/qrcode');
                 const data = await response.json();
                 setStatus(data.status);
                 setQrData(data.qrCode);
+                
+                // Ajustar o intervalo de atualização para 60 segundos se o status for 'ready'
+                if (data.status === 'ready') {
+                    setIntervalDuration(60000); // 60 segundos
+                }
             } catch (error) {
                 console.error('Erro ao buscar o QR Code:', error);
                 setStatus('error');
             }
         };
 
-        // Buscar o QR Code a cada 3 segundos
-        const interval = setInterval(fetchQRCode, timeoutDefault);
+        // Inicializa a busca do QR Code
+        fetchQRCode();
+        
+        // Configurar o intervalo de busca do QR Code
+        const interval = setInterval(fetchQRCode, intervalDuration);
+        
+        // Limpar o intervalo quando o componente for desmontado ou quando intervalDuration mudar
         return () => clearInterval(interval);
-    }, []);
+    }, [intervalDuration]); // Dependência para reiniciar o useEffect quando intervalDuration mudar
 
     if (status === 'loading') {
         return <h1>Carregando sistema...</h1>;
     }
     if (status === 'ready') {
-        timeoutDefault = 30000;
         return <h1>Bot já funcional!</h1>;
     }
     if (status === 'error') {
