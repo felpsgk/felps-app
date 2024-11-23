@@ -14,7 +14,7 @@ app.get("/piadas", (req, res) => {
     }
     res.json({
       message: "Successo",
-      data: rows,
+      data: row,
     });
   });
 });
