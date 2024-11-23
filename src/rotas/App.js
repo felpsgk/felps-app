@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import logo from '../logo.svg';
 import './App.css';
+import React, { useState, useEffect } from 'react';
 
 function QRCodeDisplay() {
     const [qrData, setQrData] = useState(null);
     const [status, setStatus] = useState('loading');
-    const [intervalDuration, setIntervalDuration] = useState(5000); // Duração padrão do intervalo
+    const [intervalDuration, setIntervalDuration] = useState(15000); // Duração padrão do intervalo
 
     useEffect(() => {
         const fetchQRCode = async () => {
@@ -52,6 +53,7 @@ function QRCodeDisplay() {
         </div>
     );
 }
+
 
 function App() {
     const [activeTab, setActiveTab] = useState('home');
