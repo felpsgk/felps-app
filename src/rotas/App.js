@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          teste - novo novo teste commit o <code>codigo</code> na máquina.
+          teste - uhu teste commit o <code>codigo</code> na máquina.
         </p>
         <p>
           e subindo com commit.
