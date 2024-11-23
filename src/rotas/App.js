@@ -5,7 +5,7 @@ import './App.css';
 function QRCodeDisplay() {
     const [qrData, setQrData] = useState(null);
     const [status, setStatus] = useState('loading');
-    const timeoutDefault = 3000;
+    var timeoutDefault = 3000;
     React.useEffect(() => {
         const fetchQRCode = async () => {
             try {
