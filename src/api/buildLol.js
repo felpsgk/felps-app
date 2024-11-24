@@ -53,12 +53,12 @@ app.get("/build/:championName", async (req, res) => {
     const $ = await fetchPage(url);
     const data = scrapeData($);
     const responseText = `
-            *Itens Iniciais* para ${championName}: \n*-*${data.startItems.join(
-      "\n*-*"
+            *Itens Iniciais* para ${championName}: \n*-* ${data.startItems.join(
+      "\n*-* "
     )}
-            \n\n*Itens Core:* \n*-*${data.coreItems.join("\n*-*")}
-            \n\n*Botas:* \n*-*${data.boots.join("\n*-*")}
-            \n\n*Itens Finais:* \n*-*${data.endItems.join("\n*-*")}
+            \n\n*Itens Core:* \n*-* ${data.coreItems.join("\n*-* ")}
+            \n\n*Botas:* \n*-* ${data.boots.join("\n*-* ")}
+            \n\n*Itens Finais:* \n*-* ${data.endItems.join("\n*-* ")}
         `;
     res.send(responseText.trim());
   } catch (error) {
