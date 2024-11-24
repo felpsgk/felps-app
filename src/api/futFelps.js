@@ -27,8 +27,10 @@ const scrapeData = ($) => {
         if (index >= 15) return false; // Limita a 15 jogadores
 
         const playerName = $(element).find('.card-25-pack-name').text().trim();
+        const playerRating = $(element).find('.card-25-pack-rating').text().trim();
+        const playerPosition = $(element).find('.card-25-pack-position').text().trim();
         const playerPrice = $(element).find('.latest-player-info-price .price').text().trim();
-        playerData.push({ name: playerName, price: playerPrice });
+        playerData.push({ name: playerName, over: playerRating, pos: playerPosition, price: playerPrice });
     });
 
     return playerData;
@@ -41,7 +43,7 @@ app.get('/jogadores', async (req, res) => {
     try {
         const $ = await fetchPage(url);
         const data = scrapeData($);
-        const responseText = data.map(player => `${player.name} está custando ${player.price}`).join(', ');
+        const responseText = data.map(player => `*${player.name}*, de Over *${player.over}*, joga como ${player.pos} está custando *${player.price}*`).join(',\n');
         res.send(responseText);
     } catch (error) {
         res.status(500).send('Erro ao fazer o scraping');
